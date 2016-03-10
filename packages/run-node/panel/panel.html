@@ -1,0 +1,43 @@
+<link rel="import" href="packages://ui-kit/widget/input/input.html">
+<link rel="import" href="packages://ui-kit/widget/button/button.html">
+
+
+<dom-module id="demo-run-node">
+    <style>
+        :host {
+            padding: 15px;
+        }
+
+        .btn-run {
+            width: 80px;
+            margin-top: 10px;
+            float: right;
+        }
+    </style>
+
+    <template>
+        <p>In this example, you can write any node program and put into your package folder, then use this input field to set the filename of your program to run in Cocos Creator's node process. By default there's a 'program1.js' file in the folder. You can add more and run different program using this input field.</p>
+
+        <p>Run this node program: </p>
+        <editor-input value="{{modulePath}}"></editor-input>
+        <editor-button class="green btn-run" on-click="btnPressed">Run</editor-button>
+    </template>
+
+    <script>
+        Editor.registerPanel( 'demo-run-node.panel', {
+
+            ready: function () {
+                // placeholder command line and current working directory
+                // you can input new command and working directory in panel input field
+                this.modulePath = 'program1.js';
+            },
+
+            btnPressed: function() {
+                // send command line and cwd to core-level
+                Editor.sendToCore('demo-run-node:run', {
+                    modulePath: this.modulePath,
+                });
+            }
+        });
+    </script>
+</dom-module>
