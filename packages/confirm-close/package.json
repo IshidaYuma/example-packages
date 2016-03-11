@@ -2,7 +2,7 @@
   "name": "demo-confirm-close",
   "version": "0.0.1",
   "description": "Confirm Close Demo",
-  "author": "Firebox Technology",
+  "author": "Chukong Technologies",
   "main": "main.js",
   "main-menu": {
     "Examples/Confirm Close": {
